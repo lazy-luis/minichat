@@ -1,25 +1,17 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
+import "./App.css";
+import ChatScreen from "./mainComponents/ChatScreen";
+import InputNameModal from "./mainComponents/InputNameModal";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+const App = () => {
+  const [isUserLogged, setIsUserLogged] = useState(false);
+  const [userName, setUserName] = useState("");
+
+  return isUserLogged ? (
+    <ChatScreen currentUser={userName} />
+  ) : (
+    <InputNameModal userLogin={setIsUserLogged} acceptUser={setUserName} />
   );
-}
+};
 
 export default App;
