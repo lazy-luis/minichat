@@ -55,19 +55,44 @@ const ChatScreen = ({ currentUser, allMessages, setMessages }) => {
             display: "flex",
             flexDirection: "column",
             alignItems: "center",
-            justifyContent: "center",
+            justifyContent: "flex-start",
             width: "90%",
             overflowY: "scroll",
           }}
+          id="chat-box"
         >
           {allMessages.map((message) => (
-            <div key={message.id}>
-              <div style={{ display: "flex", flexDirection: "row" }}>
-                <div style={{ width: "50%" }}>
-                  <div style={{ fontSize: "20px", fontWeight: "bold" }}>
-                    {message.user}
-                  </div>
-                  <div style={{ fontSize: "16px" }}>{message.message}</div>
+            <div
+              key={message.id}
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+                justifyContent: "center",
+                width: "100%",
+              }}
+            >
+              <div
+                style={{
+                  display: "flex",
+                  flexDirection: "column",
+                  minWidth: "100px",
+                  maxWidth: "300px",
+                  margin: "10px 0",
+                  padding: "10px",
+                  borderRadius: "5px",
+                  color: "#ffffff",
+                  alignSelf:
+                    message.user === currentUser ? "flex-end" : "flex-start",
+                  backgroundColor:
+                    message.user === currentUser ? "green" : "firebrick",
+                }}
+              >
+                <div style={{ fontSize: "12px", fontWeight: 400 }}>
+                  {message.user}
+                </div>
+                <div style={{ fontSize: "16px", fontWeight: 600 }}>
+                  {message.message}
                 </div>
               </div>
             </div>

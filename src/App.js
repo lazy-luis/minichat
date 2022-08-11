@@ -6,7 +6,7 @@ import InputNameModal from "./mainComponents/InputNameModal";
 const App = () => {
   const [isUserLogged, setIsUserLogged] = useState(false);
   const [userName, setUserName] = useState("");
-  const [messages, setMessages] = useState([]);
+  const [Allmessages, setMessages] = useState([]);
 
   useEffect(() => {
     const messages = localStorage.messages
@@ -20,21 +20,21 @@ const App = () => {
     }
 
     const checkLocalMessages = () => {
-      const messagess = localStorage.messages
-        ? JSON.parse(localStorage.messages)
-        : [];
-      if (messagess.length > messages.length) {
-        setMessages(messagess);
+      if (JSON.parse(localStorage.messages).length > Allmessages.length) {
+        setMessages(JSON.parse(localStorage.messages));
       }
+      document.getElementById("chat-box") !== null &&
+        (document.getElementById("chat-box").scrollTop =
+          document.getElementById("chat-box").scrollHeight);
     };
 
-    window.setInterval(checkLocalMessages, 1000);
+    window.setInterval(checkLocalMessages, 2000);
   }, []);
 
   return isUserLogged ? (
     <ChatScreen
       currentUser={userName}
-      allMessages={messages}
+      allMessages={Allmessages}
       setMessages={setMessages}
     />
   ) : (
