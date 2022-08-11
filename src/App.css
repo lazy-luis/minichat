@@ -5,3 +5,13 @@
   text-decoration: none;
   outline: none;
 }
+
+*::-webkit-scrollbar {
+  width: 2px;
+  height: 1px;
+}
+
+*::-webkit-scrollbar-thumb {
+  border-radius: 4px;
+  background: #2e8b5712;
+}
